@@ -1,39 +1,25 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import { BrowserRouter as Router,Route ,Link} from 'react-router-dom'
+
 import './App.css';
-
-
-let  arr =['a' , 'b' , 'c'];
-class Hello extends Component {
-  render() {
-    return (
-      <div>
-        <ul>
-          {arr.map((element, index) => {
-            return (
-              <li key={index} onClick={this.handleClick.bind(this)}>{element}</li>
-            )
-          })}
-        </ul>
-      </div>
-    );
-  }
-  handleClick(){
-    console.log(this)
-  }
-
-}
-
-
+// 加载组件
+import City from './pages/City/index'
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <Hello />
-      </div>
+      <Router>
+        <div>
+          <h1>App</h1>
+          <ul>
+            <li><Link to="/city">City</Link></li>
+            <li><Link to="/about">About</Link></li>
+          </ul>
+          <hr/>
+          <Route path="/city" component={City} />
+        </div>
+      </Router>
     );
   }
 }
-
 export default App;
